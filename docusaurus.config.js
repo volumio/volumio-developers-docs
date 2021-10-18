@@ -63,7 +63,7 @@ const config = {
               },
               {
                 label: 'User Manual',
-                to: 'manual.volumio.org',
+                to: 'https://manual.volumio.org',
               },
             ],
           },
