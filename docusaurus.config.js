@@ -59,7 +59,7 @@ const config = {
             items: [
               {
                 label: 'Developers Documentation',
-                to: '/docs/intro',
+                to: '/',
               },
               {
                 label: 'User Manual',
