@@ -6,11 +6,13 @@ This documentation is built using [Docusaurus 2](https://docusaurus.io/), a mode
 
 Install [Node.js](https://nodejs.org/en/download/)
 
-:::tip
+Node.js version 14.0.0 is needed. A good tool to use to install the appropriate node version is [NVM](https://github.com/nvm-sh/nvm)
 
-Node.js version 14.0.0 is needed
+```bash
+nvm install 14.0.0
+nvm use 14.0.0
+```
 
-:::
 
 Clone the Documentation
 
@@ -18,10 +20,16 @@ Clone the Documentation
 git clone https://github.com/volumio/volumio-developers-docs.git
 ```
 
-Start the site:
+Install prerequisites (only once):
 
 ```bash
 cd volumio-developers-docs
+npm install
+```
+
+Start the documentation server locally:
+
+```bash
 npx docusaurus start
 ```
 
