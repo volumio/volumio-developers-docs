@@ -24,7 +24,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/volumio/volumio-developers-docs/edit/main/website/',
+          editUrl: 'https://github.com/volumio/volumio-developers-docs/tree/master',
           routeBasePath: '/',
         },
         theme: {
@@ -38,7 +38,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Volumio Developers Documentation',
+        title: 'Developers',
         logo: {
           alt: 'Volumio logo',
           src: 'img/volumio-logo.png',
@@ -55,15 +55,11 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Resources',
             items: [
               {
-                label: 'Developers Documentation',
+                label: 'Volumio.com',
                 to: '/',
-              },
-              {
-                label: 'User Manual',
-                to: 'https://manual.volumio.org',
               },
             ],
           },
@@ -97,7 +93,7 @@ const config = {
               },
               {
                 label: 'Status',
-                href: 'https://status.volumio.org',
+                href: 'https://status.volumio.com',
               },
             ],
           },
