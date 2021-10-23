@@ -27,11 +27,11 @@ Bugs pertaining to OS are defined as:
 * Missing drivers such as Wireless adapters or Audio devices
 * Boot issues (system not starting on specific configurations)
 
-Those bugs can be reported at the [Volumio OS Issue Tracker](https://github.com/volumio/volumio-os/issues)
+Those bugs can be reported at the [Volumio OS Issue Tracker](https://github.com/volumio/volumio3-os/issues)
 
 ## User Interface (UI) bugs
 
 Bugs pertaining to UI are defined as:
 * Wrong information reported or no-feedback after action
 
-Those bugs can be reported at the [Volumio UI Issue Tracker](https://github.com/volumio/Volumio2-UI)
+Those bugs can be reported at the [Volumio UI Issue Tracker](https://github.com/volumio/Volumio2-UI/issues)
