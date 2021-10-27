@@ -67,9 +67,9 @@ Creating a new plugin
 ? Please select
 the Plugin Category
   1) audio_interface
-  2) miscellanea
-  3) music_service
-  4) system_controller
+  2) music_service
+  3) system_controller
+  4) system_hardware
   5) user_interface
   Answer: 1
 
