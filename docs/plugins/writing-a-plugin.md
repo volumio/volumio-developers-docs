@@ -5,6 +5,33 @@ title: Writing a plugin
 
 ## Writing a Plugin
 
+This document describes how to develop and submit a plugin for Volumio3. Please read the following chapters carefully.
+
+### Plugin verification process
+
+When you publish your plugin for the first time it needs to be validated by the volumio team. Up until the verification the plugin will not be visible in the plugins store. The plugin will be checked on the following: 
+
+- Security and malicious code
+- Code quality (using https://developers.volumio.com/plugins/submission-checklist)
+
+If there is an issue with the plugin you will be contacted on your MyVolumio email address. When verification is complete your plugin will be available in the beta channel of the plugins store. Every subsequent version of the plugin does not need to be verified, but will be put in the beta channel. Read the chapter 'Plugin channels' for the plugin beta process.
+
+### Plugin channels
+
+Since Volumio3 the plugins store has a stable channel (available for everyone) and a beta channel (available for beta testers). This enables developers to release test versions of a plugin so it can be tested by a small selection of people before it is publically available. This ensures that the plugin is properly tested before it's publically released, ensuring quality of the plugin and volumio as a whole. Every new plugin and all of it's subsequent versions will be put in the beta channel. 
+
+To enable the beta channel go to: http://{yourvolumioaddress}/dev and click "Plugins test mode"
+
+When beta test is complete and quility is on par with the requirements the plugin will be promoted to the stable channel by the volumio team. 
+
+### Plugin versions
+
+Since Volumio3 a plugin can have multiple versions. The 5 most recent submitted versions of the plugin will be available on the plugins store are available for download. This enables the plugin user to downgrade to a previous version if there is an issue with more recent versions of the plugin. The main page of the plugins store will always install the most recent version, more versions are available when pressing the "Details" button onm the plugin. 
+
+### Plugin ownership
+
+When a plugin is published for the first time, the owner is set based on the used MyVolumio account. Only the owner (in the future multiple owners) can publish updates for the plugin, which is also checked based on the MyVolumio account. 
+
 ### Create your plugin
 
 The plugin helper utility allows you to easily create your own plugin, by providing tools for the main steps.
@@ -151,28 +178,72 @@ have in your plugin's folder
 
 ### volumio plugin submit
 
-Call the utility with this command if you want to upload your plugin on github.
-It will automatically call the package function if no `.zip` has been found,
-after asking for a last change in versioning, then it will change branch and,
-depending on if the plugin and/or category has been found on the `plugins.json`
-file, it will ask for additional details or both details and description.
-Finally it will commit them and push them on your repo.
+Call this command from your plugin direcctory when you want to submit your plugin to the plugins store.
+
+Before you call this coommand, please make sure: 
+
+- Please make sure you have checked your code using the submission checklist: https://developers.volumio.com/plugins/submission-checklist
+- Make sure the package.json is complete, like it is documented above
+- Make sure your version is updated in package.json
+- Your code is staged, committed and pushed to your fork of the plugins-sources repo
+- You are logged in to MyVolumio
+- Your MyVolumio account is the same as the one that previously submitted this plugin
+
+Since Volumio3 a plugin can be submitted for multiple architectures at once. Some plugins are compatible for all architectures (no compilation), and some are compatible for a single architecture (with compilation). Make sure your compatible architectures are registered in the package.json as described above. If your plugin is only comaptible with one architecture, make sure only that architecture is registered in the package.json. A version of the plugin can be sumitted multiple times on different machines with a different architecture, please note that previously submitted architectures will not be overwritten by a re-submit of the same version. 
 
 ```bash
-volumio@volumio:~/volumio-plugins/plugins/audio_interface/test$ volumio plugin publish
-
-This command will publish the plugin on volumio plugins store
-
-Publishing the plugin
-? do you want to change your version? (leave blank for default) 1.0.0
-Switched to branch 'gh-pages'
-? Insert some details about your plugin (e.g. features, requirements, notes, etc
-... max 1000 chars) plugin for documentation purposes
-updating plugin sources:
-
-/usr/bin/git push origin master
-updating plugin packages:
-
-/usr/bin/git push origin gh-pages
-Congratulations, your package has been correctly uploaded and is ready for merging!
+volumio@volumio:~/volumio-plugins/plugins/audio_interface/test$ volumio plugin submit
 ```
+
+The command will check if the package.json is complete and if your code is staged, committed and pushed to your fork of the plugins-sources repo. It will also ask you to update your version if you did not do so allready. Note: if you change your version in the submit command you have to commit and push your changes again, since your package.json has changed. 
+
+When the checks are complete the command will zip your plugin directory and upload it to the plugins store. 
+
+Important! Read the chapter 'Plugin verification process' for the plugin verification process.
+
+### Package.json example
+
+```json
+{
+	"name": "plugin_name", //plugin name
+	"version": "1.0.0", //plugin version
+	"description": "This is my awesome plugin", //plugin description
+	"main": "index.js", //used by node.js
+	"scripts": { //used by node.js
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "author2000", //plugin author
+	"license": "ISC", //plugin license
+	"repository": "https://github.com/me/my_plugin", //plugin github repository
+	"volumio_info": { //all volumio specific information
+		"prettyName": "My Plugin", //plugin pretty name
+		"icon": "fa-headphones", //plugin icon to be selected on font awesome
+		"plugin_type": "music_service", //plugin category
+		"architectures": [ //plugin compatible architectures
+			"amd64",
+			"armhf",
+			"i386"
+		],
+		"os": [ //plugin compatible operating systems
+			"buster"
+		],
+		"details": "Lorem ipsum", //plugin details
+		"changelog": "Lorem ipsum", //plugin version changelog, will be appended to main changelog on publish
+	},
+	"engines": {
+		"node": ">=8", //required node.js version
+		"volumio": ">=3" //required volumio version
+	},
+	"dependencies": { //used by node.js
+		"fs-extra": "^0.28.0",
+		"kew": "^0.7.0",
+		"v-conf": "^1.4.0",
+		"nanotimer": "^0.3.15"
+	}
+}
+
+```
+
+
+
+
