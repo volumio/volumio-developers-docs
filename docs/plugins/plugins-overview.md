@@ -60,6 +60,7 @@ PLEASE NOTE: Categories name must be lowercase and separated by _ .
 #### audio_interface
 
 This typically collects plugins that add an audio interface, aka an external and not browsable music source. Typical examples are:
+
 * Airplay
 * UpNp
 * Bluetooth
@@ -68,15 +69,10 @@ This typically collects plugins that add an audio interface, aka an external and
 ##### music_service
 
 Those are browsable music sources, typically:
+
 * MPD (for local files)
 * Webradios Directories
 * Streaming Services like Spotify
-
-#### miscellanea
-
-Those plugins that are too general purpose to classify. Furthermore they are meant to work as standalone units, and they don't require interaction with other plugins. Examples:
-
-* Appearance Plugins
 
 #### system_controller
 
@@ -86,13 +82,23 @@ Those are usually core-plugins, meant to handle vital parts of Volumio.
 * Network Attached Storage
 * Core updater services
 
+#### system_hardware
+
+Those usually act with hardware 
+
+* GPIO actions (buttons, rotary encoder)
+* CPU speed
+* Amplifier activation
+* Remote
+
 #### user_interface
 
 Those plugins are meant to allow external communication to Volumio. Developing a new one will be useful to add API Rest Capability, or to extend Volumio interoperability with third party apps and controllers. Some examples:
 
 * MPD Client Protocol emulation
 * Squeeze Box emulation
-* Physical button controller
+* Touch display
+* Alternate display
 
 ## What features can be added
 

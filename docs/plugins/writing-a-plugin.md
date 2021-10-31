@@ -227,6 +227,7 @@ Important! Read the chapter 'Plugin verification process' for the plugin verific
 		"os": [ //plugin compatible operating systems
 			"buster"
 		],
+		"has_alsa_contribution": true, //If your plugin needs to capture or modify audio data, a specific instruction is required 
 		"details": "Lorem ipsum", //plugin details
 		"changelog": "Lorem ipsum", //plugin version changelog, will be appended to main changelog on publish
 	},
