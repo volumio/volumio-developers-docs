@@ -81,6 +81,9 @@ Those are browsable music sources, typically:
 ### system_hardware
 
 * USB / Serial / GPIO connected peripherals like buttons, leds, sensors, amps
+* CPU Speed
+* Amplifier activation
+* Remote controls
 
 #### system_controller
 
@@ -96,6 +99,7 @@ User interface plugins are meant to allow external communication to Volumio. Dev
 
 * Visual interfaces
 * On screen keyboards
+* Touch displayes
 
 
 ## What features can be added
