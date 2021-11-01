@@ -182,7 +182,7 @@ Before you call this coommand, please make sure:
 - Please make sure you have checked your code using the submission checklist: https://developers.volumio.com/plugins/submission-checklist
 - Make sure the package.json is complete, like it is documented below
 - Make sure your version is updated in package.json
-- Your code is staged, committed and pushed to your fork of the plugins-sources repo
+- Your code is staged, committed and pushed to your fork of the plugins-sources repo, using the current version number as description
 - You are logged in to MyVolumio
 - Your MyVolumio account is the same as the one that previously submitted this plugin
 
