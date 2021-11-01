@@ -32,6 +32,12 @@ Do not suggest users to install plugins manually. For a better experience for th
 
 :::
 
+### Plugin beta / stable channels
+
+Since Volumio3 the plugins store has a stable channel (available for everyone) and a beta channel (available for beta testers). This enables developers to release test versions of a plugin so it can be tested by a small selection of people before it is publically available. This ensures that the plugin is properly tested before it's publically released, ensuring quality of the plugin and volumio as a whole. 
+
+To enable the beta channel go to: http://{yourvolumioaddress}/dev and click "Plugins test mode"
+
 
 ## Technical overview of a plugin
 
@@ -60,7 +66,6 @@ PLEASE NOTE: Categories name must be lowercase and separated by _ .
 #### audio_interface
 
 This typically collects plugins that add an audio interface, aka an external and not browsable music source. Typical examples are:
-
 * Airplay
 * UpNp
 * Bluetooth
@@ -69,36 +74,33 @@ This typically collects plugins that add an audio interface, aka an external and
 ##### music_service
 
 Those are browsable music sources, typically:
-
 * MPD (for local files)
 * Webradios Directories
 * Streaming Services like Spotify
 
+### system_hardware
+
+* USB / Serial / GPIO connected peripherals like buttons, leds, sensors, amps
+* CPU Speed
+* Amplifier activation
+* Remote controls
+
 #### system_controller
 
-Those are usually core-plugins, meant to handle vital parts of Volumio.
+System controller are usually core-plugins, meant to handle vital parts of Volumio.
 
 * Networking
 * Network Attached Storage
 * Core updater services
 
-#### system_hardware
-
-Those usually act with hardware 
-
-* GPIO actions (buttons, rotary encoder)
-* CPU speed
-* Amplifier activation
-* Remote
-
 #### user_interface
 
-Those plugins are meant to allow external communication to Volumio. Developing a new one will be useful to add API Rest Capability, or to extend Volumio interoperability with third party apps and controllers. Some examples:
+User interface plugins are meant to allow external communication to Volumio. Developing a new one will be useful to add API Rest Capability, or to extend Volumio interoperability with third party apps and controllers. Some examples:
 
-* MPD Client Protocol emulation
-* Squeeze Box emulation
-* Touch display
-* Alternate display
+* Visual interfaces
+* On screen keyboards
+* Touch displayes
+
 
 ## What features can be added
 
@@ -114,7 +116,7 @@ A good way to understand how a plugin is made and find inspiration for your own 
 While first start, Volumio will create a folder that contains saved parameter in a config.json stored in:
 
 ```
-/data/configuration/mycategory/myplugins
+/data/configuration/mycategory/myplugin
 ```
 
 ## The plugins.json file
