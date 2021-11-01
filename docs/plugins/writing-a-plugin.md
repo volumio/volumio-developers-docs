@@ -228,6 +228,7 @@ If you encounter any issues with the submission of a plugin, please go to: https
 		"os": [ //plugin compatible operating systems
 			"buster"
 		],
+		"has_alsa_contribution": true, //If your plugin needs to capture or modify audio data, a specific instruction is required 
 		"details": "Lorem ipsum", //plugin details
 		"changelog": "Lorem ipsum", //plugin version changelog, will be appended to main changelog on publish
 	},
