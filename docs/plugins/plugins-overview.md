@@ -32,6 +32,12 @@ Do not suggest users to install plugins manually. For a better experience for th
 
 :::
 
+### Plugin beta / stable channels
+
+Since Volumio3 the plugins store has a stable channel (available for everyone) and a beta channel (available for beta testers). This enables developers to release test versions of a plugin so it can be tested by a small selection of people before it is publically available. This ensures that the plugin is properly tested before it's publically released, ensuring quality of the plugin and volumio as a whole. 
+
+To enable the beta channel go to: http://{yourvolumioaddress}/dev and click "Plugins test mode"
+
 
 ## Technical overview of a plugin
 
@@ -72,15 +78,13 @@ Those are browsable music sources, typically:
 * Webradios Directories
 * Streaming Services like Spotify
 
-#### miscellanea
+### system_hardware
 
-Those plugins that are too general purpose to classify. Furthermore they are meant to work as standalone units, and they don't require interaction with other plugins. Examples:
-
-* Appearance Plugins
+* USB / Serial / GPIO connected peripherals like buttons, leds, sensors, amps
 
 #### system_controller
 
-Those are usually core-plugins, meant to handle vital parts of Volumio.
+System controller are usually core-plugins, meant to handle vital parts of Volumio.
 
 * Networking
 * Network Attached Storage
@@ -88,11 +92,11 @@ Those are usually core-plugins, meant to handle vital parts of Volumio.
 
 #### user_interface
 
-Those plugins are meant to allow external communication to Volumio. Developing a new one will be useful to add API Rest Capability, or to extend Volumio interoperability with third party apps and controllers. Some examples:
+User interface plugins are meant to allow external communication to Volumio. Developing a new one will be useful to add API Rest Capability, or to extend Volumio interoperability with third party apps and controllers. Some examples:
 
-* MPD Client Protocol emulation
-* Squeeze Box emulation
-* Physical button controller
+* Visual interfaces
+* On screen keyboards
+
 
 ## What features can be added
 
@@ -108,7 +112,7 @@ A good way to understand how a plugin is made and find inspiration for your own 
 While first start, Volumio will create a folder that contains saved parameter in a config.json stored in:
 
 ```
-/data/configuration/mycategory/myplugins
+/data/configuration/mycategory/myplugin
 ```
 
 ## The plugins.json file

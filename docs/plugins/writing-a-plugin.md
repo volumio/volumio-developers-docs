@@ -34,6 +34,8 @@ When a plugin is published for the first time, the owner is set based on the use
 
 ### Create your plugin
 
+The first step is cloning the [volumio-plugins-sources repository](https://github.com/volumio/volumio-plugins-sources) just head there and click "fork" on top right. This creates a fork of the plugins repository on your github account. 
+
 The plugin helper utility allows you to easily create your own plugin, by providing tools for the main steps.
 Its functions are:
 
@@ -62,11 +64,6 @@ of all it will copy the repository, then create the appropriate folder as
 specified by the user and prepare all the basic files, finally it will install
 your plugin locally. Here a step by step example:
 
-:::tip
-The first step is cloning the [volumio-plugins-sources repository](https://github.com/volumio/volumio-plugins-sources) just head there and click "fork" on top right
-:::
-
-
 ```bash
 
 volumio@volumio:~$ volumio plugin init
@@ -79,8 +76,8 @@ Warning: make meaningful choices, you cannot change them later!
 Creating a new plugin
 ? volumio plugins folder non existent, please type your github username Ghembs
 cloning repo:
-git clone https://github.com/Ghembs/volumio-plugins.git
-Cloning into '/home/volumio/volumio-plugins'...
+git clone https://github.com/yourgithubname/volumio-plugins-sources.git
+Cloning into '/home/volumio/volumio-plugins-sources'...
 Done, please run command again
 
 volumio@volumio:~$ volumio plugin init
@@ -183,7 +180,7 @@ Call this command from your plugin direcctory when you want to submit your plugi
 Before you call this coommand, please make sure: 
 
 - Please make sure you have checked your code using the submission checklist: https://developers.volumio.com/plugins/submission-checklist
-- Make sure the package.json is complete, like it is documented above
+- Make sure the package.json is complete, like it is documented below
 - Make sure your version is updated in package.json
 - Your code is staged, committed and pushed to your fork of the plugins-sources repo
 - You are logged in to MyVolumio
@@ -200,6 +197,10 @@ The command will check if the package.json is complete and if your code is stage
 When the checks are complete the command will zip your plugin directory and upload it to the plugins store. 
 
 Important! Read the chapter 'Plugin verification process' for the plugin verification process.
+
+### Issues with wubmitting a plugin
+
+If you encounter any issues with the submission of a plugin, please go to: https://community.volumio.org/t/volumio3-plugins-store-issues-and-discussion/50608
 
 ### Package.json example
 
