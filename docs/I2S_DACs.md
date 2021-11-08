@@ -76,7 +76,7 @@ Basically edit the dac.json appropriately and send us a pull request. Here's wha
 
 To identify the alsa name:
 
-* Connect via [SSH](/ssh)
+* Connect via [SSH](/SSH%20Connection)
 * Enable your DAC (via UI or adding the appropriate dt-overlay parameter to /boot/userconfig.txt)
 * Reboot the PI
 * Launch the command:
