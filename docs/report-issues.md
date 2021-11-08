@@ -3,7 +3,7 @@ id: Report Issues
 title: Report Issues
 sidebar_label: Report Issues
 hide_title: true
-sidebar_position: 7
+sidebar_position: 10
 ---
 
 # How to report Issues or Bugs
