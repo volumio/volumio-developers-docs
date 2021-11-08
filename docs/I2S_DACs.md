@@ -64,7 +64,7 @@ Basically edit the dac.json appropriately and send us a pull request. Here's wha
 * id: An unique identifier. Lowercase and without spaces, possibly use the dt-overlay as id.
 * name: the name that will represent your DAC (this is what users will see in the dropdown menu)
 * overlay: mandatory for raspberry PI. The [DTOverlay parameter](https://www.raspberrypi.org/documentation/configuration/device-tree.md),  used to enable the DAC. If more than one, comma separate them.
-* alsaname: how your DAC is named by alsa. Starting from Volumio3 this value is mandatory.
+* alsacard: how your DAC is named by alsa. Starting from Volumio3 this value is mandatory.
 * alsanum: leave it to 2 for RPI and Odroid, 1 for Sparky, 0 for Thinkerboard
 * mixer: if your DAC has an hardware mixer, indicate it here, so it will be automatically configured
 * script: if you need a script to be launched on start, write here the name and place the script inside the  [scripts folder](https://github.com/volumio/volumio3-backend/tree/master/app/plugins/system_controller/i2s_dacs/scripts)
@@ -72,7 +72,7 @@ Basically edit the dac.json appropriately and send us a pull request. Here's wha
 * i2c_address: for Raspberry PI only. As a fallback, we can detect also a specific DAC via its i2c address. Indicate it here. This is a fallback mechanism in case eeprom reading won't work. IMPORTANT: Many dacs can have the same i2c address so use it only if there isn't  already another dac with the same address.
 * needs_reboot: on Raspberry PI we can enable some DACs without rebooting, by appying the DTPARAM in userspace. This doesn't work with all dacs. So please try first with this set to no. If that works and you can hear sound, fine. If that does not happen it means that your DAC is not capable of being activated without rebooting, and set this to yes.
 
-### How to correctly identify alsaname for your DAC
+### How to correctly identify alsacard for your DAC
 
 To identify the alsa name:
 
@@ -107,7 +107,7 @@ card 2: sndrpihifiberry [snd_rpi_hifiberry_dac], device 0: HifiBerry DAC HiFi pc
   Subdevice #0: subdevice #0
 ```
 
-The alsaname is the string which sits between : and [ . In this case "sndrpihifiberry" .
+The alsacard is the string which sits between : and [ . In this case "sndrpihifiberry" .
 
 ### Kernel Support
 
