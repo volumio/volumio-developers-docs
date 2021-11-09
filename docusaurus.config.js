@@ -106,7 +106,16 @@ const config = {
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: true,
-      }
+      },
+      algolia: {
+      // If Algolia did not provide you any appId, use 'BH4D9OD16A'
+      appId: 'BH4D9OD16A',
+      apiKey: '65450d3a935c90388ae8b9a18a24a777',
+      indexName: 'volumio',
+      contextualSearch: true,
+      appId: 'YOUR_APP_ID',
+      searchParameters: {'facetFilters': ["type:content"]},
+    },
     }),
 };
 
