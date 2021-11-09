@@ -113,7 +113,6 @@ const config = {
       apiKey: '65450d3a935c90388ae8b9a18a24a777',
       indexName: 'volumio',
       contextualSearch: true,
-      appId: 'YOUR_APP_ID',
       searchParameters: {'facetFilters': ["type:content"]},
     },
     }),
