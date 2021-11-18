@@ -486,7 +486,7 @@ Response
 }
 ```
 
-### ADDING ITEMS TO PLAYBACK
+### Adding items to playback
 
 Items can be added to playback in 3 ways:
 * Replacing the current content of the queue and playing Items (default and suggested)
@@ -1040,7 +1040,7 @@ EXAMPLE:
             trackType: "flac" } ] }
 ```
 
-### SYSTEM UTILITIES
+### System Utilities
 
 * Ping
 
@@ -1106,7 +1106,7 @@ Response
 }
 ```
 
-### TINY ALBUMART FACILITY
+### Tiny Albumart Facility
 
 Volumio provides an alternative facility to retrieve albumarts with shorter URLs. This is especially useful in situations where the client cannot handle large albumarts or
 the full length url with its url encoding of albumart.
@@ -1134,4 +1134,244 @@ volumio.local/tinyart/the_beatles/abbey_road/large
 
 ```
 volumio.local/tinyart/?sourceicon=music_service/mpd/favouritesicon.png
+```
+
+
+### Metadatas (premium)
+
+Volumio offers the possibility to retrieve rich metadata for artists, albums, tracks and much more.
+
+:::tip
+This feature is available only for users with an active Premium or Superstar subscription. The API is designed in a way that requests will be successful if user has an appropriate account and fail otherwise.
+:::
+
+#### Base Url
+
+The base URL is identical for all metadata REST Calls. It is made up by the backend IP address and `/api/v1/pluginEndpoint`
+
+```
+http://192.168.1.23/api/v1/pluginEndpoint
+```
+
+This is a POST call and URL is the same for every kind of request. What changes is the payload, example:
+
+```json
+{
+  "endpoint": "metavolumio",
+  "data": {
+    "mode": "storyArtist",
+    "artist": "Pink Floyd"
+  }
+}
+```
+
+
+If the call is successful, you'll see something like in the response:
+
+```json
+{
+    "success": true,
+    "data": {
+        "type": "story",
+        "value": "Pink Floyd were an English rock band formed in London in 1964..."
+    }
+}
+```
+
+NOTE: The metadatas are shown in the language that user has set. This information is automatically obtained by Volumio backend. In case a localized information is not found, the english version will be delivered.
+
+Else, if the metadata cannot be obtained, or the user does not have a required premium account, response will be like:
+
+```json
+{
+    "success": false,
+    "error": "Metavolumio not available"
+}
+```
+
+#### Artist Story
+
+Retrieves the Artist's Biography
+
+Payload:
+
+
+```json
+{
+  "endpoint": "metavolumio",
+  "data": {
+    "mode": "storyArtist",
+    "artist": "Pink Floyd"
+  }
+}
+```
+
+Example Respose:
+
+```json
+{
+    "success": true,
+    "data": {
+        "type": "story",
+        "value": "Pink Floyd were an English rock band formed in London in 1964..."
+    }
+}
+```
+
+#### Album Story
+
+Retrieves the Album's Story and informations.
+
+Payload:
+
+
+```json
+{
+  "endpoint": "metavolumio",
+  "data": {
+    "mode": "storyAlbum",
+    "artist": "Pink Floyd",
+    "album": "The dark side of the moon"
+  }
+}
+```
+
+Example Respose:
+
+```json
+{
+    "success": true,
+    "data": {
+        "type": "story",
+        "value": "The Dark Side of the Moon is the eighth studio album by the English rock band Pink Floyd..."
+    }
+}
+```
+
+#### Album Credits
+
+Retrieves the Album Credits (listing all known contributors and performers and their role)
+
+Payload:
+
+
+```json
+{
+  "endpoint": "metavolumio",
+  "data": {
+    "album": "Grace",
+    "artist": "Jeff Buckley",
+    "mode": "creditsAlbum"
+  }
+}
+```
+
+Example Respose:
+
+```json
+{
+    "success": true,
+    "data": {
+        "type": "credits",
+        "value": [
+            {
+                "key": "guitar",
+                "values": [
+                    {
+                        "name": "Gary Lucas",
+                        "uri": "mbid:/artist/d011c23d-e8e4-4b7b-90c8-63e26ee0bada"
+                    },
+                    {
+                        "name": "Michael Tighe",
+                        "uri": "mbid:/artist/5c5aed13-004e-4001-89af-269ddd847219"
+                    }
+                ]
+            },
+            {
+                "key": "organ",
+                "values": [
+                    {
+                        "name": "Loris Holland",
+                        "uri": "mbid:/artist/9e7e54b0-0ad4-427c-9ca4-483e733e29ce"
+                    }
+                ]
+            },
+            {
+                "key": "additional",
+                "values": [
+                    {
+                        "name": "Clif Norrell",
+                        "uri": "mbid:/artist/df8e1af4-c281-4d38-b06e-5f1f688c2111"
+                    },
+                    {
+                        "name": "Jeff Buckley",
+                        "uri": "mbid:/artist/e6e879c0-3d56-4f12-b3c5-3ce459661a8e"
+                    }
+                ]
+            },
+            {
+                "key": "tabla",
+                "values": [
+                    {
+                        "name": "Jeff Buckley",
+                        "uri": "mbid:/artist/e6e879c0-3d56-4f12-b3c5-3ce459661a8e"
+                    },
+                    {
+                        "name": "Misha Masud",
+                        "uri": "mbid:/artist/ba56c279-f83a-4cd0-8395-9cf45483152e"
+                    }
+                ]
+            },
+            {
+                "key": "vibraphone",
+                "values": [
+                    {
+                        "name": "Matt Johnson",
+                        "uri": "mbid:/artist/d39a5a70-de11-4ea3-a4c1-f2139cca265a"
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+Additionally, stories for artists, labels and places can be expanded. The mbid value is the mbid value (after last / in uri)
+
+The values to use are:
+
+storyPlace: if key === place
+
+```json
+{
+  "endpoint": "metavolumio",
+  "data": {
+    "mbid": "d011c23d-e8e4-4b7b-90c8-63e26ee0bada",
+    "mode": "storyPlace"
+  }
+}
+```
+
+storyLabel: if key === label
+
+```json
+{
+  "endpoint": "metavolumio",
+  "data": {
+    "mbid": "cba24ea0-6965-4bfb-bc5b-4c303a11c16c",
+    "mode": "storyLabel"
+  }
+}
+```
+
+storyArtist: everything else
+
+```json
+{
+  "endpoint": "metavolumio",
+  "data": {
+    "mbid": "d011c23d-e8e4-4b7b-90c8-63e26ee0bada",
+    "mode": "storyArtist"
+  }
+}
 ```
