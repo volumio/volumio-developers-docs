@@ -113,7 +113,7 @@ Installing dependencies locally
 npm WARN test@1.0.0 No repository field.
 
 Congratulation, your plugin has been succesfully created!
-You can find it in: /home/volumio/volumio-plugins-sources/plugins/audio_interface/test
+You can find it in: /home/volumio/volumio-plugins-sources/audio_interface/test
 
 ```
 After you selected a category and a name for the plugin, it will ask for yours,
@@ -138,7 +138,7 @@ Call the utility with this command if you worked on the source and you want a
 appropriate plugin folder, in the path of `volumio-plugins`.
 
 ```bash
-volumio@volumio:~/volumio-plugins-sources/plugins/audio_interface/test$ volumio plugin refresh
+volumio@volumio:~/volumio-plugins-sources/audio_interface/test$ volumio plugin refresh
 
 This command will copy all your plugin\'s file in the correspondent folder in data
 
@@ -160,7 +160,7 @@ content of a plugin's folder. It will take care of npm dependencies and put the
 zip in the same folder.
 
 ```bash
-volumio@volumio:~/volumio-plugins/plugins/audio_interface/test$ volumio plugin package
+volumio@volumio:~/volumio-plugins/audio_interface/test$ volumio plugin package
 
 This command will create a package with your plugin
 
@@ -189,7 +189,7 @@ Before you call this coommand, please make sure:
 Since Volumio3 a plugin can be submitted for multiple architectures at once. Some plugins are compatible for all architectures (no compilation), and some are compatible for a single architecture (with compilation). Make sure your compatible architectures are registered in the package.json as described above. If your plugin is only comaptible with one architecture, make sure only that architecture is registered in the package.json. A version of the plugin can be sumitted multiple times on different machines with a different architecture, please note that previously submitted architectures will not be overwritten by a re-submit of the same version. 
 
 ```bash
-volumio@volumio:~/volumio-plugins/plugins/audio_interface/test$ volumio plugin submit
+volumio@volumio:~/volumio-plugins/audio_interface/test$ volumio plugin submit
 ```
 
 The command will check if the package.json is complete and if your code is staged, committed and pushed to your fork of the plugins-sources repo. It will also ask you to update your version if you did not do so allready. Note: if you change your version in the submit command you have to commit and push your changes again, since your package.json has changed. 
