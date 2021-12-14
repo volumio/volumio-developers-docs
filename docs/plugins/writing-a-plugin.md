@@ -198,7 +198,7 @@ When the checks are complete the command will zip your plugin directory and uplo
 
 Important! Read the chapter 'Plugin verification process' for the plugin verification process.
 
-### Issues with wubmitting a plugin
+### Issues with submitting a plugin
 
 If you encounter any issues with the submission of a plugin, please go to: https://community.volumio.org/t/volumio3-plugins-store-issues-and-discussion/50608
 
