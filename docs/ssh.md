@@ -3,7 +3,7 @@ id: SSH Connection
 title: SSH Connection
 sidebar_label: SSH
 hide_title: true
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # SSH access on volumio
@@ -38,7 +38,7 @@ Type in the password at the prompt and press the `<Enter>` key.
 And here you are !
 
 ```bash
-volumio@192.168.1.80's password: 
+volumio@192.168.1.80's password:
                        ___
                       /\_ \                        __
          __  __    ___\//\ \    __  __    ___ ___ /\_\    ___
@@ -54,7 +54,7 @@ volumio@192.168.1.80's password:
 Volumio Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 Welcome to Volumio for Raspberry Pi (5.4.83-v7l+ armv7l)
-volumio@volumio-buster-rpi4:~$ 
+volumio@volumio-buster-rpi4:~$
 
 ```
 
@@ -105,5 +105,5 @@ This involves adding a file with a special name to the SD card containing your _
  * Flash __Volumio__ to the SD card, if you have not done so already
  * Mount the SD card on your computer
  * Create a file called `ssh` in the `/boot` partition on the card.
- 
+
  The file does not need anything inside it, but the name must be `ssh`.
