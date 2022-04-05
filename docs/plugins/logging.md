@@ -32,8 +32,18 @@ self.logger.info("Youtube::onStart Adding to browse sources");
 The logger instance has the following methods to create log messages: `info`, `warn`, `error` and `debug`.
 
 `info`: To be used for nominal events (like successfully updated configuration or successful start)
-`warn`: To be used for non-fatal errors (like failed to retrieve optional endpoints)
-`error`: To be used for fatal errors (like failed to start a daemon)
-`debug`: To be use only for very verbose logging.
+`warn`: To be used for non-fatal errors (like failed to retrieve optional endpoints)  
+`error`: To be used for fatal errors (like failed to start a daemon)  
+`debug`: To be use only for very verbose logging.  
+
+### Logging best practices
+
+* Make sure you remove all console.logs from your plugin before submitting.
+* Log only meaningful events (do not overflow logs, this makes troubleshooting harder)
+* In the log always report the plugin name, for easier troubleshooting
+* Use the minimum amount of logging possible: logs consume lot of CPU cycles
+
+
+### Volumio logger library documentation
 
 Volumio is using [winston](https://github.com/winstonjs/winston) for logging.
