@@ -29,6 +29,7 @@ IMPORTANT TIPS:
 * Node modules allow you to develop faster, by relaying on already-written code to overcome the majority of tasks, to look for them [search here](https://www.npmjs.com/package/package)
 * The `'use strict';` declaration at the beginning will ensure no obvious coding mispractices will happen, [more info on the matter](http://www.w3schools.com/js/js_strict.asp)
 * Use the minimum amount of modules needed, and try to avoid modules that needs compilation (you will spot those because they'll take longer on npm install), so you will avoid to mantain two separate versions for x86 and arm architectures.
+* Use only the modules you ABSOLUTELY need. Less modules, the better.
 
 Then we will define the plugin class and reference to other core Volumio's internals:
 
@@ -106,7 +107,13 @@ ALL plugins effects shall be performed ONLY via the onStart function (and revert
 This is to ensure that the effects of the plugins are available ONLY when the plugin is started, and not if the plugin is just installed.
 :::
 
-#### On stop
+
+:::tip
+If your plugin relies on a daemon to perform its functions, please refer to the section [Using a Daemon](/plugins/index-js#using-daemons)
+:::
+
+
+### On stop
 
 When a plugin is stopped, this function gets executed. What we're doing here is killing the spop daemon. We must resolve the promise to signal everything was ok
 
@@ -243,3 +250,40 @@ UpnpInterface.prototype.onRestart = function () {
 	});
 };
 ```
+
+
+### Using daemons
+
+Some plugins require to launch some daemons to work, for example playback, equalizer or GUI daemons. DO NOT start them via exec or execSync functions, but rather via a systemd script.
+
+A correct example is:   
+
+```javascript
+ControllerSpop.prototype.startSpopDaemon = function () {
+    var self = this;
+
+    var defer = libQ.defer();
+
+    exec("/usr/bin/sudo /bin/systemctl start spop.service", {uid: 1000, gid: 1000}, function (error, stdout, stderr) {
+        if (error !== null) {
+            self.commandRouter.pushConsoleMessage('The following error occurred while starting SPOPD: ' + error);
+            defer.reject();
+        } else {
+            self.commandRouter.pushConsoleMessage('SpopD Daemon Started');
+            defer.resolve();
+        }
+    });
+
+    return defer.promise;
+};
+```
+
+In this case:
+* Systemd will take care of starting the daemon
+* In case it fails, it will correclty reject the promise (notifying the user that the plugin failed to start)
+* In case it succeed, it will correclty resolve the promise (notifying the user that the plugin started successfully)
+
+:::tip
+
+If you need to start the daemon with some command line parameters, you can compose a dynamic bash script under `tmp` with the command and the desired parameters, and reference that into the systemd script.
+:::
