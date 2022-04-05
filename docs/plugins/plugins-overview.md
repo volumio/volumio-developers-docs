@@ -34,7 +34,7 @@ Do not suggest users to install plugins manually. For a better experience for th
 
 ### Plugin beta / stable channels
 
-Since Volumio3 the plugins store has a stable channel (available for everyone) and a beta channel (available for beta testers). This enables developers to release test versions of a plugin so it can be tested by a small selection of people before it is publically available. This ensures that the plugin is properly tested before it's publically released, ensuring quality of the plugin and volumio as a whole. 
+Since Volumio3 the plugins store has a stable channel (available for everyone) and a beta channel (available for beta testers). This enables developers to release test versions of a plugin so it can be tested by a small selection of people before it is publically available. This ensures that the plugin is properly tested before it's publically released, ensuring quality of the plugin and volumio as a whole.
 
 To enable the beta channel go to: http://{yourvolumioaddress}/dev and click "Plugins test mode"
 
@@ -78,7 +78,7 @@ Those are browsable music sources, typically:
 * Webradios Directories
 * Streaming Services like Spotify
 
-### system_hardware
+#### system_hardware
 
 * USB / Serial / GPIO connected peripherals like buttons, leds, sensors, amps
 * CPU Speed

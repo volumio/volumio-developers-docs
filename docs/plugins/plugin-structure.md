@@ -19,7 +19,7 @@ Volumio plugins are .zip files which created as the last step of the plugin crea
 
 Here you will find more details for each files listed above, what they contain, how to write a working plugin. Examples based on Spop plugin.
 
-#### Install.sh
+### Install.sh
 This file allows download and installation of dependencies for the plugin. It’s a executable file written in BASH.
 
 ```bash
@@ -55,12 +55,12 @@ IMPORTANT THINGS  TO NOTICE
 * To avoid installing unwanted stuff, make sure to place `--no-install-recommends` after your to-install list
 * `echo "plugininstallend"` must be placed at the end of the install script to signal that installation has ended.
 
-#### Index.js
+### Index.js
 
 Index.js
 This file is the main file of the plugin. It is written in javascript. Please refer to [Index.js section](/plugins/index-js)  for a detailed explanation.
 
-##### config.json
+#### config.json
 File in which is saved default parameters, and the way saved parameters will be saved.
 
 ```json
@@ -84,7 +84,7 @@ File in which is saved default parameters, and the way saved parameters will be 
 }
 ```
 
-#### Package.json
+### Package.json
 
 The package.json contains informations about your plugin. There's no need to create it manually since it's automatically created at plugin creation stage.
 
@@ -142,7 +142,7 @@ The relevant parts are:
 * version, this is used to keep track of version and request for updates if new versions are found
 * boot priority, accepts a numerical value from 1 to 10. Useful if you need to start your plugin after one another. 1 means it is started first, 10 means it will be started at last.
 
-#### Uninstall.sh
+### Uninstall.sh
 Bash file. As install file MUST be executable. Here you will basically revert what you did in the install.sh file .
 
 
@@ -156,12 +156,12 @@ Bash file. As install file MUST be executable. Here you will basically revert wh
 Details and examples of optional files
 Depending on the plugin, other file may be nedeed.
 
-#### UIConfig.json
+### UIConfig.json
 This file describes the user interface for the plugin configuration, that will appear while clicking on the cog. Please note that the filename is case sensitive.
 
 Please refer to UI Configuration Pages for reference.
 
-#### I18n
+### I18n
 This folder contains languages strings if you want to translate your plugin
 
 You have to have one file per language.
@@ -187,5 +187,5 @@ This is a json file.
 }
 ```
 
-#### Other
+### Other
 Your plugin may require other files such as image, sound, executable, configuration files etc. You have to include these files in the ZIP file and ensure proper permissions if they'll need to be edited.
