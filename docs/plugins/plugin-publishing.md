@@ -40,10 +40,10 @@ Enter your plugin's folder:
 cd /home/volumio/volumio-plugins-sources/yourplugin
 ```
 
-Use the volumio plugin publish utility:
+Use the volumio plugin submission utility:
 
 ```bash
-volumio plugin publish
+volumio plugin submit
 ```
 
 The command will check if the package.json is complete and if your code is staged, committed and pushed to your fork of the plugins-sources repo. It will also ask you to update your version if you did not do so allready. Note: if you change your version in the submit command you have to commit and push your changes again, since your package.json has changed.
@@ -52,7 +52,7 @@ When the checks are complete the command will zip your plugin directory and uplo
 
 ## Plugin verification process
 
-When you publish your plugin for the first time it needs to be validated by the volumio team. Up until the verification the plugin will not be visible in the plugins store. The plugin will be checked on the following:
+When you submit your plugin for the first time it needs to be validated by the volumio team. Up until the verification the plugin will not be visible in the plugins store. The plugin will be checked on the following:
 
 - Security and malicious code
 - Code quality (using https://developers.volumio.com/plugins/submission-checklist)
