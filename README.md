@@ -34,3 +34,7 @@ npx docusaurus start
 ```
 
 Open `http://localhost:3000` to view the documentation as you work on it.
+
+### Notes on deployment
+
+This documentation is hosted at https://developers.volumio.com and it's automatically deployed on Vercel
