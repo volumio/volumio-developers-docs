@@ -288,3 +288,8 @@ In this case:
 
 If you need to start the daemon with some command line parameters, you can compose a dynamic bash script under `tmp` with the command and the desired parameters, and reference that into the systemd script.
 :::
+
+:::danger
+Under no circumstances a Plugin shall write or edit any file under /volumio and /myvolumio folder. This applies both to install.sh and index.js performed operations.
+So make sure the daemon configuration files, if they require to be written are placed under /tmp or /data (if you require them to be persistent).
+:::

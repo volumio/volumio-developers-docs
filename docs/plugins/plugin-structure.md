@@ -55,6 +55,10 @@ IMPORTANT THINGS  TO NOTICE
 * To avoid installing unwanted stuff, make sure to place `--no-install-recommends` after your to-install list
 * `echo "plugininstallend"` must be placed at the end of the install script to signal that installation has ended.
 
+:::danger
+Under no circumstances a Plugin shall write or edit any file under /volumio and /myvolumio folder. This applies both to install.sh and index.js performed operations.
+:::
+
 ### Index.js
 
 Index.js
