@@ -292,4 +292,5 @@ If you need to start the daemon with some command line parameters, you can compo
 :::danger
 Under no circumstances a Plugin shall write or edit any file under /volumio and /myvolumio folder. This applies both to install.sh and index.js performed operations.
 So make sure the daemon configuration files, if they require to be written are placed under /tmp or /data (if you require them to be persistent).
+For more information, consult the [Filesystem Architecture Section](/Architecture/filesystem-architecture)
 :::

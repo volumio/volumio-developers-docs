@@ -56,7 +56,8 @@ IMPORTANT THINGS  TO NOTICE
 * `echo "plugininstallend"` must be placed at the end of the install script to signal that installation has ended.
 
 :::danger
-Under no circumstances a Plugin shall write or edit any file under /volumio and /myvolumio folder. This applies both to install.sh and index.js performed operations.
+Under no circumstances a Plugin shall write or edit any file under /volumio and /myvolumio folder. This applies both to install.sh and index.js performed operations.  
+For more information, consult the [Filesystem Architecture Section](/Architecture/filesystem-architecture)
 :::
 
 ### Index.js
