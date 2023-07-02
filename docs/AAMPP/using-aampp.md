@@ -23,7 +23,7 @@ pcm.in {
 ```
 
 There are several important things to note about this snippet:
-* The file name has is of the form `<a>.<b>.conf`, where `<a>` and `<b>` are the "input" and "output" of the contribution snippet
+* The file name is of the form `<a>.<b>.conf`, where `<a>` and `<b>` are the "input" and "output" of the contribution snippet
 * The snippet does not attempt to directly address the audio hardware - it only deals with the behaviour of the plugin (in this case an no-op transform)
 * Snippets should expect that their input samples are linear, and should output linear samples.
 * The snippet must be prepared to handle a variety of input sample rates, bit depths, and channel counts. In most cases this will not need special handling, however if it does then an ALSA `plug` can be used.

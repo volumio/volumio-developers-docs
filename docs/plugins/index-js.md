@@ -26,9 +26,9 @@ var nodetools = require('nodetools');
 ```
 
 IMPORTANT TIPS:
-* Node modules allow you to develop faster, by relaying on already-written code to overcome the majority of tasks, to look for them [search here](https://www.npmjs.com/package/package)
+* Node modules allow you to develop faster, by relying on already-written code to overcome the majority of tasks, to look for them [search here](https://www.npmjs.com/package/package)
 * The `'use strict';` declaration at the beginning will ensure no obvious coding mispractices will happen, [more info on the matter](http://www.w3schools.com/js/js_strict.asp)
-* Use the minimum amount of modules needed, and try to avoid modules that needs compilation (you will spot those because they'll take longer on npm install), so you will avoid to mantain two separate versions for x86 and arm architectures.
+* Use the minimum amount of modules needed, and try to avoid modules that need compilation (you will spot those because they'll take longer on npm install), so you will avoid maintaining two separate versions for x86 and arm architectures.
 * Use only the modules you ABSOLUTELY need. Less modules, the better.
 
 Then we will define the plugin class and reference to other core Volumio's internals:
@@ -70,7 +70,7 @@ ControllerSpop.prototype.onVolumioStart = function()
 
 ### On Start
 
-This instead is what happens when the Plugin starts. It's different from On Volumio Start since this function is triggered only if the plugin is enabled.
+This function is called when the Plugin starts. It's different from On Volumio Start since this function is triggered only if the plugin is enabled.
 
 In this case we're starting the spop daemon (responsible for Spotify Playback).
 
@@ -159,7 +159,7 @@ Other:
 
 ### Get Configuration files
 
-Very straightforwarding, we load the .json configuration file for this plugin.
+Very straightforward - we load the .json configuration file for this plugin.
 
 ```javascript
 ControllerSpop.prototype.getConfigurationFiles = function()
@@ -205,11 +205,11 @@ ControllerSpop.prototype.getUIConfig = function() {
 IMPORTANT:
 * With `var lang_code = this.commandRouter.sharedVars.get('language_code');` we retrieve the current language code. If translation is provided under the `/i18n/` folder, we'll translate the configuration page, if not we'll default to english.
 * We use promises here as well, since it will take some time to parse the UIConfig.json and translate it. Not using promises will result in configuration not working.
-* With `uiconf.sections[0].content[0].value = self.config.get('username');` we're simply subsituting the first element's value of the first section with the `username` value taken from the plugins configuration.  That's how we can populate the UI Configuration Page with actual values.
+* With `uiconf.sections[0].content[0].value = self.config.get('username');` we're simply substituting the first element's value of the first section with the `username` value taken from the plugins configuration.  That's how we can populate the UI Configuration Page with actual values.
 
 ### Get configuration from other plugins
 
-There are cases where we want to get configuration parameters from other plugins, for example to know if an i2s DAC has been enabled or not. We will then use the `executeOnPlugin` method which will allow us to execute any method on any plugin. For code clarity we wrapped it into the `getAdditionalConf` function, accepting 3 parameters which are mandatory for the aforementioned `executeOnPlugin`:
+There are cases where we want to get configuration parameters from other plugins, for example to know if an i2s DAC has been enabled or not. We will then use the `executeOnPlugin` method which will allow us to execute any method on any plugin. For code clarity we wrapped it into the `getAdditionalConf` function, accepting three (3) parameters which are mandatory for the aforementioned `executeOnPlugin`:
 
 * TYPE (plugin category)
 * CONTROLLER (plugin name)
@@ -255,7 +255,7 @@ UpnpInterface.prototype.onRestart = function () {
 
 ### Using daemons
 
-Some plugins require to launch some daemons to work, for example playback, equalizer or GUI daemons. DO NOT start them via exec or execSync functions, but rather via a systemd script.
+Some plugins require launching some daemons to work, for example playback, equalizer or GUI daemons. DO NOT start them via exec or execSync functions, but rather via a systemd script.
 
 A correct example is:   
 

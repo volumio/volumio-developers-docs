@@ -14,7 +14,7 @@ The WebSocket API interface is located at: https://github.com/volumio/Volumio2/b
 Websocket communication in Volumio is identifiable in the most basic server/client architecture. The Server is Volumio itself (aka the host where Volumio is running), the client can be one or more WebUIs or other consumers (Apps and so on). In some cases, Volumio hosts can also act as client, to communicate with other hosts on the same network.
 
 ### Events
-Socket.io allows to invoke events triggered by other events, emit and receive communications (on its most basic implementation). As an example, defining which event should be invoked on a client connection  looks like:
+Socket.io allows events triggered by other events, emit and receive communications (on its most basic implementation). As an example, defining which event should be invoked on a client connection  looks like:
 
 ```js
 self.libSocketIO.on('connection', function (connWebSocket) {
@@ -102,8 +102,8 @@ Where
 * **artist** is the item's artist
 * **album** is the item's album
 * **albumart** the URL of AlbumArt (via last.fm APIs)
-* **uri** it's the track's unique uri
-* **trackType** The track's type: e.g. mp3, flac, spotify etc
+* **uri** is the track's unique uri
+* **trackType** is the track's type: e.g. mp3, flac, spotify etc
 * **seek** is the item's current elapsed time
 * **duration** is the item's duration, if any
 * **random** if true, random mode is enabled
@@ -644,7 +644,7 @@ The payload shall be a json with the following structure:
 
 where:
 
-* **endpoint** is a string used to target the plugin. Its structure is a linux path like string containing the plugin category, a slash and the plugin name. An example: endpoint:'music_service/spop'.
+* **endpoint** is a string used to target the plugin. Its structure is a linux path-like string containing the plugin category, a slash and the plugin name. An example: endpoint:'music_service/spop'.
 * **method** is a string containing the name of the method to be executed.
 * **data** is a complex value (can be a string or a  Json) and is passed as is to the method.
 

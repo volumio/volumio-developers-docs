@@ -4,13 +4,13 @@ title: UI Configuration page
 ---
 ## The Configuration Page
 
-To allow an easy development of plugin, we need a structured but still flexible way to configure plugins. Volumio uses a json based markup languages to describe the visual and functional aspects of configuration pages. This supports multilanguage and should be flexible enough to allow any kind of setting to be modified. If you feel your case is not covered, feel free to open an issue or discussion at [https://github.com/volumio/volumio3-backend](https://github.com/volumio/volumio3-backend)
+To allow easy development of a plugin, we need a structured but still flexible way to configure plugins. Volumio uses a json-based markup languages to describe the visual and functional aspects of configuration pages. This supports multilanguage and should be flexible enough to allow any kind of setting to be modified. If you feel your case is not covered, feel free to open an issue or discussion at [https://github.com/volumio/volumio3-backend](https://github.com/volumio/volumio3-backend)
 
 ## Introduction
 
-Configurations resides on single .json files, pertaining to a core component or a specific plugin. This file is `UIConfig.json` and it's interpreted by the `getUIConfig` function present in every plugin. The very same system is used by both Volumio core plugins and community developed plugins, the only difference is that for core functions (such as Wi-fi browser, NAS Browser and some others) we developed special controllers in the UI. You can take a look at them in the  [core elements part of Volumio2 UI](https://github.com/volumio/Volumio2-UI/tree/master/src/app/plugin/core-plugin) .
+Configurations resides in single .json files, pertaining to a core component or a specific plugin. This file is `UIConfig.json` and it's interpreted by the `getUIConfig` function present in every plugin. The very same system is used by both Volumio core plugins and community developed plugins, the only difference is that for core functions (such as Wi-fi browser, NAS Browser and some others) we developed special controllers in the UI. You can take a look at them in the  [core elements part of Volumio2 UI](https://github.com/volumio/Volumio2-UI/tree/master/src/app/plugin/core-plugin) .
 
-This the flow of events that results in the visualization of the configuration page:
+This is the flow of events that results in the visualization of the configuration page:
 
 1. Click on cog wheel, this sends the message `getUiConfig` for the category and plugin name
 2. CommandRouter forwards it to the Plugins
@@ -74,7 +74,7 @@ It's the json file which describes visually and functionally the configuration p
 
 ```
 
-Let's break it down and analyze in its sections:
+Let's break it down and analyze it in sections:
 
 ```json
   "page": {
@@ -131,7 +131,7 @@ Those are the sections descriptors. A section is typically a block of options wh
 Content defines all the elements available in a section. It needs the following fields:
 
 * id : the id, this one is the one referred in saveButton data
-* type : type of the element, for a comprehensive list of examples see later
+* type : type of the element, for a comprehensive list of examples see `Element Types` below
 * doc : an explanation of what the field does, please try to use translations as opposed to static text, that way anyone can translate it into their own language.
 * label: label, please try to use translations as opposed to static text, that way anyone can translate it into their own language.
 * value: this is the current value of the element, can be manipulated in the `getUIConfig` function. It can be either a boolean (true | false), a string or a number.
@@ -318,8 +318,8 @@ Content defines all the elements available in a section. It needs the following 
 In order to allow people to translate the plugin into their own languages it is advised to use translations as opposed to static lines of text. It only takes up a little more time, but saves time in the long run.
 
 Requirements:
-* i18n module (it needs to be places in the node_modules directory)
-* a i18n directory with at least one (preferably (also) English) language file e.g.: strings_en.json
+* i18n module (it needs to be placed in the node_modules directory)
+* i18n directory with at least one (preferably (also) English) language file e.g.: strings_en.json
 
 You can translate strings by calling the TRANSLATE command in the text field followed by any number of nodes, you can make it as complex as you want, but keep it readable please.
 
