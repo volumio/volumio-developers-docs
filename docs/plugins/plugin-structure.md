@@ -158,8 +158,8 @@ Bash file. As install file MUST be executable. Here you will basically revert wh
 | Other             | Text, image, sound, script, executable... | required file / script to use in the plugin such as executable or service,image, sound,  application key...   |
 | RequiredConf.json | json                                      | Configuration key or variables mandatory for the plugin to work. Useful to add a new parameter with an update |
 
-Details and examples of optional files
-Depending on the plugin, other file may be nedeed.
+Details and examples of optional files. 
+Depending on the plugin, other files may be needed.
 
 ### UIConfig.json
 This file describes the user interface for the plugin configuration, that will appear while clicking on the cog. Please note that the filename is case sensitive.
@@ -167,7 +167,7 @@ This file describes the user interface for the plugin configuration, that will a
 Please refer to UI Configuration Pages for reference.
 
 ### I18n
-This folder contains languages strings if you want to translate your plugin
+This folder contains languages strings if you want to translate your plugin.
 
 You have to have one file per language.
 
@@ -193,4 +193,4 @@ This is a json file.
 ```
 
 ### Other
-Your plugin may require other files such as image, sound, executable, configuration files etc. You have to include these files in the ZIP file and ensure proper permissions if they'll need to be edited.
+Your plugin may require other files such as image, sound, executable, configuration files, etc. You have to include these files in the ZIP file and ensure proper permissions if they'll need to be edited.

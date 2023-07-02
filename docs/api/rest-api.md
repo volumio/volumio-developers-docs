@@ -15,7 +15,7 @@ curl volumio.local/api/v1/commands/mycommand
 
 Where _volumio.local_ is the device to be reached. You can also use the IP adress instead.
 
-From the device itself (via a keyboard plugged on it or through [SSH](https://volumio.github.io/docs/User_Manual/SSH.html)), use :
+From the device itself (via a keyboard plugged into it or through [SSH](https://volumio.github.io/docs/User_Manual/SSH.html)), use :
 
 ```
 curl localhost:3000/api/v1/commands/mycommand
@@ -653,12 +653,12 @@ Payload
 }
 ```
 
-Where:
-List: is the list of object we want to play
-Index: is the item we want to play first (in this example we are starting playback from track 6)
-Item: The selected item that will play first
+Where
+* `List`: is the list of object we want to play
+* `Index`: is the item we want to play first (in this example we are starting playback from track 6)
+* `Item`: is the selected item that will play first
 
-Alternatively, a single item can be provided (in this case, put directly the item in the payload, without using the values index, list and iteam)
+Alternatively, a single item can be provided (in this case, put directly the item in the payload, without using the values index, list and item)
 
 * Adding items to queue
 
@@ -827,7 +827,7 @@ Payload
   "trackType": "flac"
 }
 ```
-Just send an item or an iteams array with all the items you want to be added to queue.
+Just send an item or an items array with all the items you want to be added to queue.
 
 * Collection Statistics
 
@@ -835,7 +835,7 @@ Just send an item or an iteams array with all the items you want to be added to 
 volumio.local/api/v1/collectionstats
 ```
 
-This API returns an overall of the music collection currently handled by Volumio
+This API returns counts and play length of the music collection currently handled by Volumio
 
 
 Response
@@ -893,12 +893,12 @@ Response
 }
 ```
 
-IMPORTANT: If isSelf = true, it means that this is the device that hanled the REST call.
+IMPORTANT: If isSelf = true, it means that this is the device that handled the REST call.
 
 
 ### Notifications
 
-Volumio REST API can be used in a event driven fashion. Volumio can notify via POST calls when state changes. This is a much more efficient and elegant way to retrieve informations, instead of continuously polling the relevant endpoints.
+Volumio REST API can be used in an event driven fashion. Volumio can notify via POST calls when state changes. This is a much more efficient and elegant way to retrieve informations, instead of continuously polling the relevant endpoints.
 
 For example, we can ask Volumio to notify every status change to the URL http://192.168.1.33/volumiostatus (the URL is totally configurable, just make sure it is a valid http endpoint).
 To do so, we will simply make the POST request:
@@ -1064,7 +1064,7 @@ pong
 volumio.local/api/v1/getSystemVersion
 ```
 
-This API provides the software version, build date and hardware informtions.
+This API provides the software version, build date and hardware informations.
 
 
 Response
@@ -1080,7 +1080,7 @@ Response
 volumio.local/api/v1/getSystemInfo
 ```
 
-This API provides the a summary information on the device, the service name and playback status.
+This API provides summary information of the device, the service name and playback status.
 
 
 Response

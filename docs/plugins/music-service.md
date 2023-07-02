@@ -5,7 +5,7 @@ title: Music Services Plugins
 
 Music Services Plugins are plugins which extend Volumio's sources, for example by adding a streaming service, a music playback daemon or a music catalog.
 
-Music sources requires an extra bit of functions to be hooked properly into Volumio. Basically the need to expose their "browsable" structure of data, allow search and provide a translation for their displayed name on Music Sources. Missing any of those will result in a non working plugin, and possibly a broken Volumio.
+Music sources requires an extra bit of functions to be hooked properly into Volumio. Basically the need to expose their "browsable" structure of data, allow search and provide a translation for their displayed name on Music Sources. Missing any of those will result in a non-working plugin, and possibly a broken Volumio.
 
 Those are:
 
@@ -20,9 +20,9 @@ Optional functions are:
 
 ## Folders and Structures
 
-In your plugin you may want to show folders and songs. Volmuio knows several different types that offer different functionalities to the user.
+In your plugin you may want to show folders and songs. Volumio knows several different types that offer different functionalities to the user.
 
-Those types offer the user the opportunity to add it to its favorites or to a playlist by clicking on the burger mneu:
+Those types offer the user the opportunity to add it to favorites or to a playlist by clicking on the burger mneu:
 
 * folder
 * song
@@ -63,7 +63,7 @@ Use the type property on the object you are returning the the required and optio
   ]
 }
 ```
-if the request was to add songs of a playlist to queue then use following format to return by wrapping in a promise resolve value:-
+If the request was to add songs of a playlist to queue then use following format to return by wrapping in a promise resolve value:
 
 ```json
 [
@@ -92,7 +92,7 @@ if the request was to add songs of a playlist to queue then use following format
 
 ### Add to Browse sources
 
-This functions adds the new music source to Main Browse Menu.
+This function adds the new music source to the Main Browse Menu.
 Rules to Follow:
 
 * Invoke this function ONLY when the plugin starts properly, and if you're relying on a daemon only when successful connection has been established with the daemon and the service.
@@ -169,7 +169,7 @@ ControllerMpd.prototype.handleBrowseUri = function (curUri) {
 
 ```
 
-* Spotify browsing
+* Spotify browsing:
 
 ```javascript
 ControllerSpop.prototype.handleBrowseUri=function(curUri)
@@ -281,7 +281,7 @@ ControllerSpop.prototype.handleBrowseUri=function(curUri)
 
 BEST PRACTICES:
 * Hardcode all expected uris, and handle errors in case you receive an unknown one
-* Use separate functions for every uri tpye
+* Use separate functions for every uri type
 * Use promises where possible
 * If you use an external API service with API limits, cache where possible.
 * Navigation is nested, so make sure you provide the upper level (needed for going back while browsing)
@@ -856,24 +856,6 @@ Youtube.prototype.getTrackInfo = function (uri) {
 
   return deferred.promise;
 }
-```
-
-### Prefetch
-
-This method is called by volumio when the previous song ends and the next one is about to start. This allows gapless playback.
-
-```js
-ControllerUPNPBrowser.prototype.prefetch = function (trackBlock) {
-  var self = this;
-  this.logger.info('Doing Prefetch in UPNP');
-  var uri = trackBlock.uri;
-
-  var safeUri = uri.replace(/"/g, '\\"');
-  return self.mpdPlugin.sendMpdCommand('add "' + safeUri + '"', [])
-    	.then(function () {
-        	return self.mpdPlugin.sendMpdCommand('consume 1', []);
-    	});
-};
 ```
 
 ### Prefetch

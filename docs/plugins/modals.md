@@ -4,7 +4,7 @@ title: Modal Windows
 ---
 
 
-Modals can be used to interact with users in case an explicit action or an aknowledgment is needed.
+Modals can be used to interact with users in case an explicit action or an acknowledgment is needed.
 
 Here's an example:
 

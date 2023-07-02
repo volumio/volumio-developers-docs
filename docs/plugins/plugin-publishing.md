@@ -16,19 +16,19 @@ Before you start the publishing procedure, please make sure:
 - You are logged in to MyVolumio
 - Your MyVolumio account is the same as the one that previously submitted this plugin
 
-Since Volumio3 a plugin can be submitted for multiple architectures at once. Some plugins are compatible for all architectures (no compilation), and some are compatible for a single architecture (with compilation). Make sure your compatible architectures are registered in the package.json as described above. If your plugin is only comaptible with one architecture, make sure only that architecture is registered in the package.json. A version of the plugin can be sumitted multiple times on different machines with a different architecture, please note that previously submitted architectures will not be overwritten by a re-submit of the same version.
+Since Volumio3 a plugin can be submitted for multiple architectures at once. Some plugins are compatible for all architectures (no compilation), and some are compatible for a single architecture (with compilation). Make sure your compatible architectures are registered in the package.json as described above. If your plugin is only compatible with one architecture, make sure only that architecture is registered in the package.json. A version of the plugin can be submitted multiple times on different machines with a different architecture, please note that previously submitted architectures will not be overwritten by a re-submit of the same version.
 
 ## Publishing Workflow
 
 Plugin publishing follows a simple workflow:
 
 * Write your plugin
-* Check that you follow our guidelines and that the plugin is stable and ready for prime-time.
+* Check that you follow our guidelines and that the plugin is stable and ready for prime-time
 * Make sure it passes the [plugin submission checklist](/plugins/writing-a-plugin)
 * Volumio Team will review your plugin and provide feedbacks if something needs fixing
 * You will implement the required fixes and re-submit the plugin
-* If fixes are implemented properly, Volumio Team will approve the plugin and publish it.
-* The same will apply for each plugin update.
+* If fixes are implemented properly, Volumio Team will approve the plugin and publish it
+* The same will apply for each plugin update
 
 ## How to Publish or update
 
@@ -46,7 +46,7 @@ Use the volumio plugin submission utility:
 volumio plugin submit
 ```
 
-The command will check if the package.json is complete and if your code is staged, committed and pushed to your fork of the plugins-sources repo. It will also ask you to update your version if you did not do so allready. Note: if you change your version in the submit command you have to commit and push your changes again, since your package.json has changed.
+The command will check if the package.json is complete and if your code is staged, committed and pushed to your fork of the plugins-sources repo. It will also ask you to update your version if you did not do so already. Note: if you change your version in the submit command you have to commit and push your changes again, since your package.json has changed.
 
 When the checks are complete the command will zip your plugin directory and upload it to the plugins store.
 
@@ -61,7 +61,7 @@ If there is an issue with the plugin you will be contacted on your MyVolumio ema
 
 ## Plugin channels
 
-Since Volumio3 the plugins store has a stable channel (available for everyone) and a beta channel (available for beta testers). This enables developers to release test versions of a plugin so it can be tested by a small selection of people before it is publically available. This ensures that the plugin is properly tested before it's publically released, ensuring quality of the plugin and volumio as a whole. Every new plugin and all of it's subsequent versions will be put in the beta channel.
+Since Volumio3 the plugins store has a stable channel (available for everyone) and a beta channel (available for beta testers). This enables developers to release test versions of a plugin so it can be tested by a small selection of people before it is publicly available. This ensures that the plugin is properly tested before it's publicly released, ensuring quality of the plugin and volumio as a whole. Every new plugin and all of it's subsequent versions will be put in the beta channel.
 
 To enable the beta channel go to: http://{yourvolumioaddress}/dev and click "Plugins test mode"
 
@@ -69,7 +69,7 @@ When beta test is complete and quility is on par with the requirements the plugi
 
 ## Plugin versions
 
-Since Volumio3 a plugin can have multiple versions. The 5 most recent submitted versions of the plugin will be available on the plugins store are available for download. This enables the plugin user to downgrade to a previous version if there is an issue with more recent versions of the plugin. The main page of the plugins store will always install the most recent version, more versions are available when pressing the "Details" button onm the plugin.
+Since Volumio3 a plugin can have multiple versions. The 5 most recent submitted versions of the plugin will be available on the plugins store are available for download. This enables the plugin user to downgrade to a previous version if there is an issue with more recent versions of the plugin. The main page of the plugins store will always install the most recent version, more versions are available when pressing the "Details" button on the plugin.
 
 ## Plugin ownership
 

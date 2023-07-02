@@ -39,7 +39,7 @@ volumio plugin update
 Call the utility with this command to create a new plugin from scratch. First
 of all it will copy the repository, then create the appropriate folder as
 specified by the user and prepare all the basic files, finally it will install
-your plugin locally. Here a step by step example:
+your plugin locally. Here is a step by step example:
 
 ```bash
 

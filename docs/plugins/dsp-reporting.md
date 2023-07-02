@@ -24,7 +24,7 @@ FusionDsp.prototype.reportFusionEnabled = function () {
   } catch(e) {}
 }
 ```
-This funcion is simply invoked in the onStart function of the plugin, so the properties are added only if and when the plugin is started.
+This function is simply invoked in the onStart function of the plugin, so the properties are added only if and when the plugin is started.
 
 Parameters:
 * id: mandatory. This is the ID of the DSP. Must be unique.
