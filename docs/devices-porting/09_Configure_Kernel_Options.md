@@ -14,6 +14,7 @@ nfs server
 usb audio
 iptables  
 cifs
+hid multitouch (CONFIG_HID_MULTITOUCH=m)
 
 ## Device dependent modules
 board's soc sound options and codecs
