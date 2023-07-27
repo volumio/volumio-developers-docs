@@ -13,7 +13,7 @@ nls437
 nfs server  
 usb audio
 iptables  
-cifs
+cifs  
 hid multitouch (CONFIG_HID_MULTITOUCH=m)
 
 ## Device dependent modules
