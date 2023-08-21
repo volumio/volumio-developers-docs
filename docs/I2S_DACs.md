@@ -22,12 +22,6 @@ In order to work, 2 components are needed:
 * The kernel driver shall be present in the kernel that Volumio Uses. If that's not the case, see [here](#kernel-support).
 * Volumio shall know how to configure and enable the DAC, by having proper entries in its I2S DAC Json file.
 
-:::note
-Given the increasing number of I2S DACs on the market, Volumio's policy is to accept Pull Requests only for DACs that require a specific overlay to work, and this overlay is not already stated in the JSON File. This way we reduce to the minimum the I2S DACs list and offer a compelling user experience.
-
-If, for example your DAC requires the "hifiberry-dacplus" overlay to work, we won't merge your request for a new DAC that uses this overlay. On your end, simply suggest your users the appropriate entry to select in Volumio to make your DAC work.
-:::
-
 ### The dacs.json file
 
 Volumio stores all compatibility data for i2s dac in a single file: the  [dacs.json file](https://github.com/volumio/volumio3-backend/blob/master/app/plugins/system_controller/i2s_dacs/dacs.json),
