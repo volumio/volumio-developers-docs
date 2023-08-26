@@ -15,7 +15,7 @@ To achieve this solution, Volumio uses a peculiar File System Architecture compo
 * A squashfs filesystem, where Volumio OS rootfs is stored
 * An overlay filesystem, which is the R/W layer used to store persistent files modification
 
-This has the advantage of loading the necessary OS files on RAM but allowing at the same time write operations, there is however a drawback: in case a file that resides on the base rootfs is edited, it will be mirrored on the overlay filesytem. This will mean that in subsequent OTA updates, the file in the overlay will superseed the file on Squashfs.
+This has the advantage of loading the necessary OS files in RAM but allowing at the same time write operations. There is, however, a drawback. In case a file that resides on the base rootfs is edited, it will be mirrored on the overlay filesytem. This will mean that in subsequent OTA updates, the file in the overlay will supersede the file on Squashfs.
 
 :::caution
 To guarantee stable and predictable operations of the system, it is suggested to NEVER overwrite files under /volumio and /myvolumio folders (recursively).
