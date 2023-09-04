@@ -103,3 +103,11 @@ plugin.prototype.onAudioDeviceChanged = function() {
 In general plugins should avoid trying to pick a particular order for snippets to run. There are, however, some cases where it is preferable to supply an ordering hint to Volumio.
 
 In these scenarios the name of the ALSA contribution can be adjusted to include a third numeric segment `<a>.<b>.<priority>.conf`. The priority is an integer, and defaults to zero if not specified. Larger (more positive) values are put closer to the audio source. Lower (more negative) values are put closer to the hardware.
+
+### Debugging
+
+Debugging can be enabled on the Alsa Pipeline by creating a file in /data/alsadebug and restarting Volumio (and deleting it when not necessary).
+
+```
+touch /data/alsadebug
+```
