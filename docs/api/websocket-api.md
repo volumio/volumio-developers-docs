@@ -218,15 +218,22 @@ Where `objBrowseParameters` are the parameters we want to dig into. This returns
 {
   navigation: {
     prev: {
-      uri: ''
+      uri: '',
     },
-    list: [
-      {service: 'mpd', type: 'song',  title: 'track a', artist: 'artist a', album: 'album', icon: 'music' uri: 'uri'},
-      {type: 'folder',  title: 'folder a', icon: 'folder-open-o' uri: 'uri'},
-      {type: 'folder',  title: 'folder b', albumart: '//ip/image' uri: 'uri2'},
-      {type: 'playlist',  title: 'playlist', icon: 'bars' uri: 'uri4'}
-    ]
-  }
+    lists: [
+      {
+        title: 'any list title, e.g Albums',
+        availableListViews: ['grid', 'list'],
+        items: [
+          { service: 'mpd', type: 'song', title: 'track a', artist: 'artist a', album: 'album', icon: 'music', uri: 'uri' },
+          { type: 'folder', title: 'folder a', icon: 'folder-open-o', uri: 'uri' },
+          { type: 'folder', title: 'folder b', albumart: '//ip/image', uri: 'uri2' },
+          { type: 'playlist', title: 'playlist', icon: 'bars', uri: 'uri4' },
+        ],
+      },
+      /* ...more lists... */
+    ],
+  },
 }
 ```
 
@@ -243,6 +250,110 @@ Their parameters are:
 - Artist and Album: used only if the type is song
 - Icon or image: Select the icon to display (naming of [Font-Awesome](https://fortawesome.github.io/Font-Awesome/icons/) ) , or image (URL served by Volumio Backend or external service)
 - Uri: Uri
+
+#### Sorting
+
+##### Modern
+
+There is a list property `availableSortings` which contains info about available sorting methods.
+Each sorting method has a label, URIs for ascending and descending order and a flag `active` if the
+corresponding method is used for the current response.
+
+```js
+{
+  navigation: {
+    lists: [
+      {
+        availableSortings: [
+          {
+            label: 'Method 1, e.g. A-Z',
+            asc: {
+              uri: 'uri-to-sort-by-az-asc',
+              active: true, // determines if this sorting is currently used for this response
+            },
+            desc: {
+              uri: 'uri-to-sort-by-az-desc',
+              active: false,
+            },
+          },
+          {
+            label: 'Method 2, e.g. Date Added',
+            asc: {
+              uri: 'uri-to-sort-by-dateadded-asc',
+              active: false,
+            },
+            desc: {
+              uri: 'uri-to-sort-by-dateadded-desc',
+              active: false,
+            },
+          },
+          {
+            label: 'Method 3, e.g. Artist',
+            asc: {
+              uri: 'uri-to-sort-by-artist-asc',
+              active: false,
+            },
+            desc: {
+              uri: 'uri-to-sort-by-artist-desc',
+              active: false,
+            },
+          },
+          /* ...any other sorting methods... */
+        ],
+        // ...other list props...
+        title: 'any list title, e.g Albums',
+        items: [ /* sorted items */ ],
+      },
+    ],
+  },
+}
+```
+
+##### Legacy
+
+Legacy sorting uses a workaround which returned 2 lists in the `browseLibrary` response.
+First list contains sorting methods as list items, which have their own uri, albumart, etc.
+Second list contains library items which were requested for.
+
+```js
+{
+  navigation: {
+    lists: [
+      {
+        items: [
+          {
+            type: 'item-no-menu',
+            title: 'Method 1, e.g. A-Z',
+            albumart: 'icon-for-az-button.png',
+            uri: 'uri-to-sort-by-az',
+          },
+          {
+            type: 'item-no-menu',
+            title: 'Method 2, e.g. Date Added',
+            albumart: 'icon-for-dateadded-button.png',
+            uri: 'uri-to-sort-by-dateadded',
+          },
+          {
+            type: 'item-no-menu',
+            title: 'Method 3, e.g. Artist',
+            albumart: 'icon-for-artist-button.png',
+            uri: 'uri-to-sort-by-artist',
+          },
+          /* ...any other sorting methods... */
+        ],
+        /* ...other list props... */
+      },
+      {
+        type: '',
+        title: 'any list title', // legacy sorting used this field to show current sorting method name
+        pageTitle: 'any list title, e.g Albums', // used for backward compatibility only when legacy and modern sortings are used in the same response
+        items: [ /* sorted items */ ],
+        /* ...other list props... */
+      },
+    ],
+  },
+}
+```
 
 ### Get Music Library Available filters
 
