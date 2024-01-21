@@ -309,6 +309,47 @@ corresponding method is used for the current response.
 }
 ```
 
+###### Persistent sorting
+
+Server returns navigation items with an uri with a special placeholder, e.g. on root page:
+
+```json
+{
+  "navigation": {
+    "lists": [
+      {
+        //...
+        "items": [
+          {
+            "title": "My albums",
+            "uri": "qobuz://myalbums/{{qobuz-sort-myalbums}}"
+            //...
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+If the client does not support persistent sorting, then it navigates to this uri without any modification as is, and the server treats it as a view with default sorting.
+
+If the client supports persistent sorting, then before navigating into this uri, it replaces this placeholder with the stored value (e.g. in `localStorage`) which received from the server on "sort" action.
+
+Sort action returns a response with the following properties:
+
+```json
+{
+  "navigation": {
+    //...
+  },
+  "uriPlaceholder": "any value which required by the server to replicate the sort",
+  "uriPlaceholderKey": "any unique key, e.g. qobuz-sort-myalbums"
+}
+```
+
+Those properties should be stored by client to be able to send them back inside corresponding uri's.
+
 ##### Legacy
 
 Legacy sorting uses a workaround which returned 2 lists in the `browseLibrary` response.
