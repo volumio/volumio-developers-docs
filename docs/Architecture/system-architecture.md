@@ -30,7 +30,7 @@ Volumio Core has an MVC-like architecture which breaks the player functionality 
 #### Clients
 The clients represent anything that can open a connection with the Volumio server and send commands. This is code that runs on the client machine, whether it be a PC, tablet, phone, or watch. The Volumio WebUI is one of the possible clients you can use to connect to the Volumio server. It communicates to the server using a standard websocket protocol. And since this is a standard protocol, users may code any other web interface they want, and have it drive Volumio.
 
-#### Clients
+#### Interfaces
 Which brings us to our next group of modules, the interfaces. Interfaces serve as the intermediaries between the clients and the Volumio core. They translate what are typically text commands into function calls that the core executes. These interface modules are designed to be interchangeable - they offer a set of standard methods that the core can call, and return data in a standard format. We are developing this standard as we go, but the general idea is that users can drop in their own interface modules, which will allow for more interface options than just websocket and MPD emulation. For example, one could write an interface module for hard controls (real knobs and buttons, imagine that!), for local kiosk-style control, etc.
 
 #### Core Modules
