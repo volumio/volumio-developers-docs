@@ -82,11 +82,17 @@ volumio.local/api/v1/commands/?cmd=prev
 volumio.local/api/v1/commands/?cmd=next
 ```
 
+* Seek
+```
+volumio.local/api/v1/commands/?cmd=seek&position=42
+```
+where position can be: an integer value in seconds, or _plus_, _minus_ (_plus/minus_ will seek forward/backward 10 seconds)
+
 * Volume
 ```
 volumio.local/api/v1/commands/?cmd=volume&volume=80
 ```
-where volume can be: mute, unmute, plus, minus (plus and minus will increase\decrease as per parameter one click volume steps)
+where volume can be: an integer value between 0 and 100, or _mute_, _unmute_, _plus_, _minus_ (_plus/minus_ will increase/decrease as per parameter one click volume steps)
 
 ### Music Library
 
