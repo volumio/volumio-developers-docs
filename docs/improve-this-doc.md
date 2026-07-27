@@ -30,11 +30,12 @@ Install dependencies:
 
 Install [Node.js](https://nodejs.org/en/download/)
 
-Node.js version 14.0.0 is needed. A good tool to use to install the appropriate node version is [NVM](https://github.com/nvm-sh/nvm)
+Docusaurus 2 requires Node.js 16.14 or newer; we recommend the current LTS release (26).
+A good tool to use to install the appropriate node version is [NVM](https://github.com/nvm-sh/nvm)
 
 ```bash
-nvm install 14.0.0
-nvm use 14.0.0
+nvm install 26
+nvm use 26
 ```
 
 Install prerequisites (only once):
