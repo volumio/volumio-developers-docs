@@ -107,7 +107,7 @@ User interface plugins are meant to allow external communication to Volumio. Dev
 This features could be miscellaneous, such as new online music provider, new radio stream, management of the GPIO (for supported devices), various DSP, display and plenty of other useful things ! The only limitation is your imagination !
 
 :::tip
-A good way to understand how a plugin is made and find inspiration for your own developement is to browse the [plugin sources repository](https://github.com/volumio/volumio-plugins-sources)
+A good way to understand how a plugin is made and find inspiration for your own developement is to browse the [plugin sources repository](https://github.com/volumio/volumio-plugins-sources-bookworm)
 :::
 
 
