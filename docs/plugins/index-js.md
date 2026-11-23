@@ -20,7 +20,7 @@ var libNet = require('net');
 var libFast = require('fast.js');
 var fs=require('fs-extra');
 var config = new (require('v-conf'))();
-var exec = require('child_process').exec;
+var execFile = require('child_process').execFile;
 var SpotifyWebApi = require('spotify-web-api-node');
 var nodetools = require('nodetools');
 ```
@@ -116,20 +116,23 @@ If your plugin relies on a daemon to perform its functions, please refer to the 
 
 ### On stop
 
-When a plugin is stopped, this function gets executed. What we're doing here is killing the spop daemon. We must resolve the promise to signal everything was ok
+When a plugin is stopped, this function gets executed. What we're doing here is stopping the spop daemon's systemd unit. We must resolve the promise to signal everything was ok
 
 ```javascript
 ControllerSpop.prototype.onStop = function() {
 	var self = this;
 
-	self.logger.info("Killing SpopD daemon");
-	exec("/usr/bin/sudo /usr/bin/killall spopd", function (error, stdout, stderr) {
-		if(error){
-			self.logger.info('Cannot kill spop Daemon')
+	var defer = libQ.defer();
+
+	self.logger.info("Stopping SpopD daemon");
+	execFile('/usr/bin/sudo', ['/bin/systemctl', 'stop', 'spop.service'], function (error) {
+		if (error) {
+			self.logger.error('Cannot stop spop Daemon: ' + error);
 		}
+		defer.resolve();
 	});
 
-	return libQ.resolve();
+	return defer.promise;
 };
 ```
 
@@ -244,10 +247,10 @@ Sometimes it might be useful to have a function to restart the plugin. Here's an
 UpnpInterface.prototype.onRestart = function () {
 	var self = this;
 
-	exec('/usr/bin/sudo /usr/bin/killall upmpdcli', function (error, stdout, stderr) {
+	execFile('/usr/bin/sudo', ['/bin/systemctl', 'restart', 'upmpdcli.service'], function (error) {
 		if (error) {
-			self.logger.error('Cannot kill upmpdcli '+error);
-		} self.startUpmpdcli();
+			self.logger.error('Cannot restart upmpdcli ' + error);
+		}
 	});
 };
 ```
@@ -265,7 +268,7 @@ ControllerSpop.prototype.startSpopDaemon = function () {
 
     var defer = libQ.defer();
 
-    exec("/usr/bin/sudo /bin/systemctl start spop.service", {uid: 1000, gid: 1000}, function (error, stdout, stderr) {
+    execFile('/usr/bin/sudo', ['/bin/systemctl', 'start', 'spop.service'], {uid: 1000, gid: 1000}, function (error, stdout, stderr) {
         if (error !== null) {
             self.commandRouter.pushConsoleMessage('The following error occurred while starting SPOPD: ' + error);
             defer.reject();
@@ -286,7 +289,7 @@ In this case:
 
 :::tip
 
-If you need to start the daemon with some command line parameters, you can compose a dynamic bash script under `tmp` with the command and the desired parameters, and reference that into the systemd script.
+If you need to start the daemon with some parameters, write them to an environment file under `/tmp` and reference it from the systemd unit with `EnvironmentFile=`. Never build a shell command out of settings values.
 :::
 
 :::danger

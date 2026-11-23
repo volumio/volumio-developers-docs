@@ -5,13 +5,13 @@ title: The Plugin Utility
 
 ## Writing a Plugin
 
-This document describes how to develop and submit a plugin for Volumio3. Please read the following chapters carefully.
+This document describes how to develop and submit a plugin for Volumio 4 (Debian Bookworm). Please read the following chapters carefully.
 
 Volumio integrates a command line utility which automates and simplifies the process.
 
 ### Create your plugin
 
-The first step is cloning the [volumio-plugins-sources repository](https://github.com/volumio/volumio-plugins-sources) just head there and click "fork" on top right. This creates a fork of the plugins repository on your github account.
+The first step is cloning the [volumio-plugins-sources-bookworm repository](https://github.com/volumio/volumio-plugins-sources-bookworm) just head there and click "fork" on top right. This creates a fork of the plugins repository on your github account.
 
 The plugin helper utility allows you to easily create your own plugin, by providing tools for the main steps.
 Its functions are:
@@ -53,8 +53,8 @@ Warning: make meaningful choices, you cannot change them later!
 Creating a new plugin
 ? volumio plugins folder non existent, please type your github username Ghembs
 cloning repo:
-git clone https://github.com/yourgithubname/volumio-plugins-sources.git
-Cloning into '/home/volumio/volumio-plugins-sources'...
+git clone https://github.com/yourgithubname/volumio-plugins-sources-bookworm.git
+Cloning into '/home/volumio/volumio-plugins-sources-bookworm'...
 Done, please run command again
 
 volumio@volumio:~$ volumio plugin init
@@ -90,7 +90,7 @@ Installing dependencies locally
 npm WARN test@1.0.0 No repository field.
 
 Congratulation, your plugin has been succesfully created!
-You can find it in: /home/volumio/volumio-plugins-sources/test
+You can find it in: /home/volumio/volumio-plugins-sources-bookworm/test
 
 ```
 After you selected a category and a name for the plugin, it will ask for yours,
@@ -99,7 +99,7 @@ create it and install it locally (/data/plugins/...).
 
 #### downloading/installing dependencies
 
-If you need npm packages for your plugin you might want to install the build-essential package to be able to download and compile packages using the node package manager (npm).
+Declare npm packages in your plugin's `package.json`, pinned to exact versions. `volumio plugin package` installs them and bundles `node_modules` into the plugin zip, so `install.sh` must never run npm. If a package needs to be compiled, install the build-essential package on your development device.
 
 ```bash
 
@@ -112,10 +112,10 @@ You can now install package from npm by using the simple command npm install {pa
 
 Call the utility with this command if you worked on the source and you want a
  plugin to be updated locally (/data/plugins/...). You have to call it from an
-appropriate plugin folder, in the path of `volumio-plugins`.
+appropriate plugin folder, in the path of `volumio-plugins-sources-bookworm`.
 
 ```bash
-volumio@volumio:~/volumio-plugins-sources/test$ volumio plugin refresh
+volumio@volumio:~/volumio-plugins-sources-bookworm/test$ volumio plugin refresh
 
 This command will copy all your plugin\'s file in the correspondent folder in data
 
@@ -137,7 +137,7 @@ content of a plugin's folder. It will take care of npm dependencies and put the
 zip in the same folder.
 
 ```bash
-volumio@volumio:~/volumio-plugins-sources/test$ volumio plugin package
+volumio@volumio:~/volumio-plugins-sources-bookworm/test$ volumio plugin package
 
 This command will create a package with your plugin
 

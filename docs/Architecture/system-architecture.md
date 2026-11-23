@@ -14,9 +14,9 @@ clients and interfaces. The main interface is Volumio's Web UI, which is built w
 
 ### Volumio OS
 
-Volumio OS is a custom OS based on Debian (buster at the time of writing). It contains only the bare minimum utilities to get Volumio running, to be as lightweight as possible.
+Volumio OS is a custom OS based on Debian Bookworm. It contains only the bare minimum utilities to get Volumio running, to be as lightweight as possible.
 
-Source code can be found on Github at the [Volumio 3 OS Repo](https://github.com/volumio/volumio3-os)
+Source code can be found on Github at the [Volumio OS Repo](https://github.com/volumio/volumio-os)
 
 ### Volumio Core
 
